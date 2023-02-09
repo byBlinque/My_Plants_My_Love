@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardCornerRadius="15dp"
@@ -13,7 +13,10 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_margin="30dp">
+        android:layout_margin="30dp"
+        app:cardBackgroundColor="@color/background_color"
+        app:strokeWidth="@dimen/general_stroke_width"
+        app:strokeColor="@color/stroke_color">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -25,30 +28,37 @@
                 android:hint="Название действия"
                 app:helperText="Обязательное поле"
                 app:helperTextTextColor="@color/black"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="10dp"
+                app:helperTextTextAppearance="@style/helper_text_style"
+                app:counterTextAppearance="@style/helper_text_style"
+                style="@style/text_dropdown_layout_style">
                 <AutoCompleteTextView
                     android:id="@+id/plant_action_name_actv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="none"/>
+                    android:inputType="none"
+                    style="@style/text_dropdown_edit_style"
+                    />
             </com.google.android.material.textfield.TextInputLayout>
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 app:helperText="Обязательное поле"
                 app:helperTextTextColor="@color/black"
                 app:counterEnabled="true"
                 app:counterMaxLength="20"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="10dp"
+                app:helperTextTextAppearance="@style/helper_text_style"
+                app:counterTextAppearance="@style/helper_text_style"
+                style="@style/text_layout_style">
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/plant_action_note_et"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:lines="1"
                     android:maxLength="20"
-                    android:hint="Короткая заметка"/>
+                    android:hint="Короткая заметка"
+                    style="@style/text_edit_style"/>
             </com.google.android.material.textfield.TextInputLayout>
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
@@ -56,52 +66,66 @@
                 android:hint="Когда выполнить"
                 app:helperText="Обязательное поле"
                 app:helperTextTextColor="@color/black"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="10dp"
+                app:helperTextTextAppearance="@style/helper_text_style"
+                app:counterTextAppearance="@style/helper_text_style"
+                style="@style/text_dropdown_layout_style">
                 <AutoCompleteTextView
                     android:id="@+id/action_date_type_auto_complete_tv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="none"/>
+                    android:inputType="none"
+                    style="@style/text_dropdown_edit_style"/>
             </com.google.android.material.textfield.TextInputLayout>
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/date_time_interval_auto_complete_tv_wrapper"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 app:helperText="Обязательное поле"
                 app:helperTextTextColor="@color/black"
                 android:hint="Выполнить раз в..."
-                android:visibility="gone">
+                android:visibility="gone"
+                app:helperTextTextAppearance="@style/helper_text_style"
+                app:counterTextAppearance="@style/helper_text_style"
+                style="@style/text_dropdown_layout_style">
                 <AutoCompleteTextView
                     android:id="@+id/date_time_interval_auto_complete_tv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="none" />
+                    android:inputType="none"
+                    style="@style/text_dropdown_edit_style"/>
             </com.google.android.material.textfield.TextInputLayout>
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/certain_date_of_month_auto_complete_tv_wrapper"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                app:helperText="Обязательное поле"
+                app:helperTextTextColor="@color/black"
                 android:hint="Выберите число месяца"
-                android:visibility="gone">
+                android:visibility="gone"
+                app:helperTextTextAppearance="@style/helper_text_style"
+                app:counterTextAppearance="@style/helper_text_style"
+                style="@style/text_dropdown_layout_style">
                 <AutoCompleteTextView
                     android:id="@+id/certain_date_of_month_auto_complete_tv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="none" />
+                    android:inputType="none"
+                    style="@style/text_dropdown_edit_style"/>
             </com.google.android.material.textfield.TextInputLayout>
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/certain_date_of_year_auto_complete_tv_wrapper"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:visibility="gone"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 app:helperText="Обязательное поле"
-                app:helperTextTextColor="@color/black">
+                app:helperTextTextColor="@color/black"
+                app:helperTextTextAppearance="@style/helper_text_style"
+                app:counterTextAppearance="@style/helper_text_style"
+                style="@style/text_layout_style">
                 <AutoCompleteTextView
                     android:id="@+id/certain_date_of_year_auto_complete_tv"
                     android:layout_width="match_parent"
@@ -111,7 +135,8 @@
                     android:inputType="none"
                     android:lines="1"
                     android:maxLength="20"
-                    android:padding="15dp" />
+                    android:padding="15dp"
+                    style="@style/text_edit_style"/>
             </com.google.android.material.textfield.TextInputLayout>
             <com.google.android.flexbox.FlexboxLayout
                 android:id="@+id/week_days_buttons"
@@ -125,114 +150,92 @@
                     android:id="@+id/mon_button"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:visibility="visible"
-                    app:cardCornerRadius="6dp"
-                    app:strokeColor="#331C36"
-                    app:strokeWidth="2dp">
+                    android:backgroundTint="@color/white"
+                    style="@style/day_of_week_button_style">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:fontFamily="@font/rubik_regular"
                         android:text="Пн"
-                        android:textColor="#331C36"
-                        android:textSize="15sp" />
+                        style="@style/day_of_week_button_text_style"/>
                 </com.google.android.material.card.MaterialCardView>
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/tue_button"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    app:cardCornerRadius="6dp"
-                    app:strokeColor="#331C36"
-                    app:strokeWidth="2dp">
+                    android:backgroundTint="@color/white"
+                    style="@style/day_of_week_button_style">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:fontFamily="@font/rubik_regular"
                         android:text="Вт"
-                        android:textColor="#331C36"
-                        android:textSize="15sp" />
+                        style="@style/day_of_week_button_text_style" />
                 </com.google.android.material.card.MaterialCardView>
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/wen_button"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    app:cardCornerRadius="6dp"
-                    app:strokeColor="#331C36"
-                    app:strokeWidth="2dp">
+                    android:backgroundTint="@color/white"
+                    style="@style/day_of_week_button_style">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:fontFamily="@font/rubik_regular"
                         android:text="Ср"
-                        android:textColor="#331C36"
-                        android:textSize="15sp" />
+                        style="@style/day_of_week_button_text_style"/>
                 </com.google.android.material.card.MaterialCardView>
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/thu_button"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    app:cardCornerRadius="6dp"
-                    app:strokeColor="#331C36"
-                    app:strokeWidth="2dp">
+                    android:backgroundTint="@color/white"
+                    style="@style/day_of_week_button_style">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:fontFamily="@font/rubik_regular"
                         android:text="Чт"
-                        android:textColor="#331C36"
-                        android:textSize="15sp" />
+                        style="@style/day_of_week_button_text_style"/>
                 </com.google.android.material.card.MaterialCardView>
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/fri_button"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    app:cardCornerRadius="6dp"
-                    app:strokeColor="#331C36"
-                    app:strokeWidth="2dp">
+                    android:backgroundTint="@color/white"
+                    style="@style/day_of_week_button_style">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:fontFamily="@font/rubik_regular"
                         android:text="Пт"
-                        android:textColor="#331C36"
-                        android:textSize="15sp" />
+                        style="@style/day_of_week_button_text_style"/>
                 </com.google.android.material.card.MaterialCardView>
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/sat_button"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    app:cardCornerRadius="6dp"
-                    app:strokeColor="#331C36"
-                    app:strokeWidth="2dp">
+                    android:backgroundTint="@color/white"
+                    style="@style/day_of_week_button_style">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:fontFamily="@font/rubik_regular"
                         android:text="Сб"
-                        android:textColor="#331C36"
-                        android:textSize="15sp" />
+                        style="@style/day_of_week_button_text_style"/>
                 </com.google.android.material.card.MaterialCardView>
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/sun_button"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    app:cardCornerRadius="6dp"
-                    app:strokeColor="#331C36"
-                    app:strokeWidth="2dp">
+                    android:backgroundTint="@color/white"
+                    style="@style/day_of_week_button_style">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:fontFamily="@font/rubik_regular"
                         android:text="Вс"
-                        android:textColor="#331C36"
-                        android:textSize="15sp" />
+                        style="@style/day_of_week_button_text_style"/>
                 </com.google.android.material.card.MaterialCardView>
             </com.google.android.flexbox.FlexboxLayout>
             <com.google.android.material.textfield.TextInputLayout
@@ -240,9 +243,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:visibility="gone"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 app:helperText="Обязательное поле"
-                app:helperTextTextColor="@color/black">
+                app:helperTextTextColor="@color/black"
+                app:helperTextTextAppearance="@style/helper_text_style"
+                app:counterTextAppearance="@style/helper_text_style"
+                style="@style/text_layout_style" >
                 <AutoCompleteTextView
                     android:id="@+id/first_date_interval_auto_complete_tv"
                     android:layout_width="match_parent"
@@ -252,16 +257,19 @@
                     android:inputType="none"
                     android:lines="1"
                     android:maxLength="20"
-                    android:padding="15dp" />
+                    android:padding="15dp"
+                    style="@style/text_edit_style"/>
             </com.google.android.material.textfield.TextInputLayout>
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/second_date_interval_auto_complete_tv_wrapper"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:visibility="gone"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 app:helperText="Обязательное поле"
-                app:helperTextTextColor="@color/black">
+                app:helperTextTextColor="@color/black"
+                app:helperTextTextAppearance="@style/helper_text_style"
+                app:counterTextAppearance="@style/helper_text_style"
+                style="@style/text_layout_style">
                 <AutoCompleteTextView
                     android:id="@+id/second_date_interval_auto_complete_tv"
                     android:layout_width="match_parent"
@@ -271,7 +279,8 @@
                     android:inputType="none"
                     android:lines="1"
                     android:maxLength="20"
-                    android:padding="15dp" />
+                    android:padding="15dp"
+                    style="@style/text_edit_style"/>
             </com.google.android.material.textfield.TextInputLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -279,22 +288,24 @@
                 android:orientation="horizontal"
                 android:layout_marginTop="15dp">
                 <Button
-                    android:id="@+id/add_plant_action_btn"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Добавить"
-                    android:layout_weight="1"
-                    android:layout_marginRight="10dp"
-                    android:textSize="12sp"/>
-                <Button
                     android:id="@+id/cancel_plant_action_btn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Отмена"
                     android:layout_weight="1"
+                    android:layout_marginRight="10dp"
+                    style="@style/dialog_button_style"
+                    android:backgroundTint="@color/background_color"
+                    android:textColor="@color/stroke_color"/>
+                <Button
+                    android:id="@+id/add_plant_action_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Добавить"
+                    android:layout_weight="1"
                     android:layout_marginLeft="10dp"
-                    android:textSize="12sp"/>
+                    style="@style/dialog_button_style"/>
             </LinearLayout>
         </LinearLayout>
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -51,7 +51,7 @@
                 android:layout_marginTop="10dp"
                 app:helperTextTextAppearance="@style/helper_text_style"
                 app:counterTextAppearance="@style/helper_text_style"
-                style="@style/text_layout_style">>
+                style="@style/text_layout_style">
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/plant_note_et"
                     android:layout_width="match_parent"
@@ -105,22 +105,25 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_marginTop="10dp">
-                <Button
-                    android:id="@+id/add_plant_btn"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Добавить"
-                    android:layout_weight="1"
-                    android:layout_marginRight="10dp"
-                    android:textSize="12sp"/>
-                <Button
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/cancel_plant_btn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Отмена"
                     android:layout_weight="1"
+                    android:layout_marginRight="10dp"
+                    style="@style/dialog_button_style"
+                    android:backgroundTint="@color/background_color"
+                    android:textColor="@color/stroke_color"/>
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/add_plant_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Добавить"
+                    android:layout_weight="1"
                     android:layout_marginLeft="10dp"
-                    android:textSize="12sp"/>
+                    style="@style/dialog_button_style"/>
+
             </LinearLayout>
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
