@@ -5,40 +5,34 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
-    app:cardBackgroundColor="#FFFFFF">
-
+    app:cardBackgroundColor="@color/white">
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            app:cardCornerRadius="20dp"
+            android:layout_height="@dimen/plant_card_height"
+            app:cardCornerRadius="@dimen/card_corner_radius"
             app:cardBackgroundColor="#FFFFFF"
             android:layout_marginHorizontal="14dp"
             android:layout_marginBottom="10dp"
             android:layout_gravity="center"
             android:layout_centerInParent="true"
-            app:strokeColor="#331C36"
-            app:strokeWidth="2dp">
-
+            app:strokeColor="@color/stroke_color"
+            app:strokeWidth="@dimen/general_stroke_width">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal">
-
                         <RelativeLayout
                             android:layout_width="100dp"
                             android:layout_height="match_parent">
-
                                 <com.google.android.material.card.MaterialCardView
-                                    android:layout_width="80dp"
-                                    android:layout_height="80dp"
+                                    android:layout_width="@dimen/plant_image_height"
+                                    android:layout_height="@dimen/plant_image_height"
                                     android:layout_centerInParent="true"
                                     app:cardBackgroundColor="#FFFFFF"
-                                    app:cardCornerRadius="15dp"
-                                    app:strokeColor="#331C36"
-                                    app:strokeWidth="2dp"></com.google.android.material.card.MaterialCardView>
+                                    app:cardCornerRadius="@dimen/inner_corner_radius"
+                                    app:strokeColor="@color/stroke_color"
+                                    app:strokeWidth="@dimen/general_stroke_width"></com.google.android.material.card.MaterialCardView>
                         </RelativeLayout>
-
-
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
@@ -46,7 +40,6 @@
                             android:layout_marginLeft="0dp"
                             android:layout_marginRight="10dp"
                             android:orientation="vertical">
-
                                 <RelativeLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
@@ -54,17 +47,15 @@
                                     android:layout_marginTop="0dp"
                                     android:layout_marginBottom="5dp"
                                     android:orientation="horizontal">
-
                                         <com.google.android.material.card.MaterialCardView
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_alignParentLeft="true"
                                             android:layout_centerInParent="true"
-                                            app:cardBackgroundColor="#75B49D"
-                                            app:cardCornerRadius="5dp"
-                                            app:strokeColor="#331C36"
-                                            app:strokeWidth="1.5dp">
-
+                                            app:cardBackgroundColor="@color/green_hightlight_color"
+                                            app:cardCornerRadius="@dimen/small_wrapper_corner_radius"
+                                            app:strokeColor="@color/stroke_color"
+                                            app:strokeWidth="@dimen/small_wrapper_stroke_width">
                                                 <TextView
                                                     android:id="@+id/plant_location"
                                                     android:layout_width="wrap_content"
@@ -75,11 +66,9 @@
                                                     android:paddingHorizontal="7dp"
                                                     android:paddingVertical="3dp"
                                                     android:text="Кухня"
-
-                                                    android:textColor="#FFFFFF"
-                                                    android:textSize="12sp" />
+                                                    style="@style/smallest_text_style"
+                                                    android:textColor="@color/white" />
                                         </com.google.android.material.card.MaterialCardView>
-
                                         <TextView
                                             android:id="@+id/plant_delete"
                                             android:layout_width="wrap_content"
@@ -88,129 +77,30 @@
                                             android:layout_centerVertical="true"
                                             android:fontFamily="@font/rubik_regular"
                                             android:text="Удалить"
-                                            android:textColor="#7A5E7E"
-                                            android:textSize="12sp" />
-
+                                            style="@style/smallest_text_style"/>
                                 </RelativeLayout>
-
                                 <LinearLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_centerVertical="true"
                                     android:layout_marginTop="3dp"
                                     android:orientation="vertical">
-
                                         <TextView
                                             android:id="@+id/plant_name"
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
                                             android:layout_marginTop="0dp"
-                                            android:fontFamily="@font/rubik_regular"
                                             android:text="Монстера мунлайнт"
-                                            android:textColor="#331C36"
-                                            android:textSize="20sp"
-                                            android:textStyle="bold" />
-
+                                            style="@style/card_title_style"/>
                                         <TextView
                                             android:id="@+id/plant_note"
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
                                             android:layout_marginTop="3dp"
-                                            android:fontFamily="@font/rubik_regular"
                                             android:text="К весне на продажу"
-                                            android:textColor="#BEBDBD"
-                                            android:textSize="15sp" />
-
+                                            style="@style/card_subtitle_style" />
                                 </LinearLayout>
-
-
-                                <!--<LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginRight="0dp"
-                                    android:layout_marginTop="0dp"
-                                    android:layout_alignParentBottom="true"
-                                    android:orientation="horizontal"
-                                    android:layout_marginBottom="8dp">
-                                        <com.google.android.material.card.MaterialCardView
-                                            android:layout_height="wrap_content"
-                                            android:layout_width="wrap_content"
-                                            app:strokeColor="#000000"
-                                            app:strokeWidth="1dp"
-                                            android:layout_marginRight="3dp"
-                                            app:cardBackgroundColor="#76B39C"
-                                            >
-                                                <TextView
-                                                    android:id="@+id/plant_action_watering"
-                                                    android:layout_width="wrap_content"
-                                                    android:layout_height="wrap_content"
-                                                    android:text="Полив"
-                                                    android:textSize="12sp"
-                                                    android:layout_marginTop="0dp"
-                                                    android:layout_marginRight="0dp"
-                                                    android:textColor="#404244"
-                                                    android:paddingVertical="1dp"
-                                                    android:paddingHorizontal="4dp"/>
-                                        </com.google.android.material.card.MaterialCardView>
-
-                                        <com.google.android.material.card.MaterialCardView
-                                            android:layout_height="wrap_content"
-                                            android:layout_width="wrap_content"
-                                            app:strokeColor="#000000"
-                                            app:strokeWidth="1dp"
-                                            android:layout_marginRight="3dp"
-                                            app:cardBackgroundColor="#EEAA7C">
-                                                <TextView
-                                                    android:id="@+id/plant_action_fertilizing"
-                                                    android:layout_width="wrap_content"
-                                                    android:layout_height="wrap_content"
-                                                    android:text="Удобрение"
-                                                    android:textSize="12sp"
-                                                    android:layout_marginTop="0dp"
-                                                    android:layout_marginRight="0dp"
-                                                    android:textColor="#404244"
-                                                    android:paddingVertical="1dp"
-                                                    android:paddingHorizontal="4dp"/>
-                                        </com.google.android.material.card.MaterialCardView>
-
-                                        <com.google.android.material.card.MaterialCardView
-                                            android:layout_height="wrap_content"
-                                            android:layout_width="wrap_content"
-                                            app:strokeColor="#000000"
-                                            app:strokeWidth="1dp"
-                                            android:layout_marginRight="3dp"
-                                            app:cardBackgroundColor="#FBD685">
-                                                <TextView
-                                                    android:id="@+id/plant_action_transplant"
-                                                    android:layout_width="wrap_content"
-                                                    android:layout_height="wrap_content"
-                                                    android:text="Пересадка"
-                                                    android:textSize="12sp"
-                                                    android:layout_marginTop="0dp"
-                                                    android:layout_marginRight="0dp"
-                                                    android:textColor="#404244"
-                                                    android:paddingVertical="1dp"
-                                                    android:paddingHorizontal="4dp"/>
-                                        </com.google.android.material.card.MaterialCardView>
-
-                                </LinearLayout>-->
-
-
                         </LinearLayout>
-
-
                 </LinearLayout>
-
-
-
-
-
-
         </com.google.android.material.card.MaterialCardView>
-
-
-
-
-
-
 </RelativeLayout>

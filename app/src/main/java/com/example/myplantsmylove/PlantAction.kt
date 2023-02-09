@@ -25,7 +25,7 @@ class PlantAction(
     // 2 - В конкретный день/дни
     var actionDateType: Int = 0,
 
-    // 1 - временной промежуток
+    // 0 - Каждый день/месяц/год
             // 0 - каждый день
             // 1 - каждый месяц
             // 2 - каждый год
@@ -38,7 +38,7 @@ class PlantAction(
     var certainDateOfYear: String = "",
 
     // 2 - дни недели, по которым нужно выполнять действие
-    var weekDaysSchedule: String = "!0000000", // <- первый элемент пустой
+    var weekDaysSchedule: String = "00000000", // <- первый элемент пустой
 
     // 3 - промежуток, в течение которого нужно выполнять действие - начало и конец
     //var dateRange: Array<LocalDate> = arrayOf(LocalDate.parse("2022-01-01"), LocalDate.parse("2022-01-02")),
@@ -51,6 +51,13 @@ class PlantAction(
 
 ): java.io.Serializable {
     companion object {
+        var actionNameList = arrayOf<String>(
+            "Полив",
+            "Пересадка",
+            "Удобрение",
+            "Обработка"
+        )
+
         var dateTypeList = arrayOf<String>(
             "каждый день/месяц/год",
             "по определенным дням недели",
@@ -62,6 +69,13 @@ class PlantAction(
             "каждый месяц",
             "каждый год"
         )
+
+        var certainDateOfMonthList = arrayListOf<String>("В последний день месяца")
+        init {
+            for (i in 1..30) {
+                certainDateOfMonthList.add(i.toString())
+            }
+        }
 
         fun parseDateType(dateTypeString: String): Int {
             var result: Int = -1
@@ -79,9 +93,9 @@ class PlantAction(
 
         fun parseTimeInterval(timeIntervalString: String): Int {
             var result: Int = -1
-            for (dateTime in timeIntervalList) {
-                if (dateTime.toString().equals(timeIntervalString)) {
-                    result = timeIntervalList.indexOf(dateTime)
+            for (timeInterval in timeIntervalList) {
+                if (timeInterval.toString().equals(timeIntervalString)) {
+                    result = timeIntervalList.indexOf(timeInterval)
                 }
             }
             return result
@@ -89,6 +103,42 @@ class PlantAction(
         fun intToActionDateTimeInterval(actionTimeIntervalInt: Int): String
         {
             return timeIntervalList.get(actionTimeIntervalInt)
+        }
+        fun parseIntWeekDays(weekDaysString: String): ArrayList<Int> {
+            var arrayInt: ArrayList<Int> = arrayListOf()
+            var arrayChar = weekDaysString.toCharArray()
+            for (arrayElement in arrayChar) {
+                if (arrayElement.equals('0') || arrayElement.equals('1')) {
+                    arrayInt.add(Integer.parseInt(arrayElement.toString()))
+                }
+                else {
+                    arrayInt.add(0)
+                }
+            }
+            return arrayInt
+        }
+
+        // отсчет месяца в DatePicker начинается с нуля, нужно увеличить на 1 перед тем, как показать
+        fun monthForCalendar(monthValue: Int): Int {
+            return monthValue - 1
+        }
+        fun monthFromCalendar(monthValue: Int): Int {
+            return monthValue + 1
+        }
+
+        fun dayOfWeekToRus(dayOfWeek: String): String {
+            when (dayOfWeek) {
+                "MONDAY" -> return "Понедельник"
+                "WEDNESDAY" -> return "Вторник"
+                "TUESDAY" -> return "Среда"
+                "THURSDAY" -> return "Четверг"
+                "FRIDAY" -> return "Пятница"
+                "SATURDAY" -> return "Суббота"
+                "SUNDAY" -> return "Воскресенье"
+                else -> {
+                    return "Неизвестный день недели"
+                }
+            }
         }
 
     }

@@ -22,27 +22,16 @@ import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
 
-class MainActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
+class MainActivity : AppCompatActivity() {
 
     private lateinit var dateText: TextView
     private lateinit var plantDialogBtn: Button
-    private lateinit var currentDate: LocalDate
-    private lateinit var formatter: DateTimeFormatter
-    private lateinit var formattedDate: String
-
-    lateinit var layoutManager: RecyclerView.LayoutManager
 
     var plantArray: ArrayList<Plant> = arrayListOf()
 
     lateinit var plantRV: RecyclerView
+    lateinit var layoutManager: RecyclerView.LayoutManager
     lateinit var plantAdapter: PlantAdapter
-
-    var currentDayOfWeek: String = ""
-    var currentDaysInMonth: Int = 0
-
-    var savedDay: Int = 0
-    var savedMonth: Int = 0
-    var savedYear: Int = 0
 
     // что делать с полученной датой - записать в новый объект, поменять в бд и пр.
     // 0 - начальное значение / ничего не делать, 1 - записать дату в созданное действие, 2 - поменять дату в существующем действии
@@ -53,16 +42,10 @@ class MainActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
-
         dateText = findViewById<TextView>(R.id.text_view_date)
         plantDialogBtn = findViewById<Button>(R.id.plant_dialog_btn)
 
         val db = DBHelper(this)
-
-        //db.insertPlantToDB("creation date", "name", "note", "location", "description")
-        //db.insertPlantToDB("creation date", "name", "note", "location", "description")
-        //db.deletePlant(14)
 
         plantArray = db.getPlantData()
         dateText.text = ""
@@ -77,11 +60,8 @@ class MainActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
         plantRV.layoutManager = layoutManager
         plantRV.adapter = plantAdapter
 
-
         dateText.setOnClickListener {
             dateActionType = 1
-            getCurrentDateTime()
-            //DatePickerDialog(this, this, currentDate.year, monthForCalendar(currentDate.monthValue.toInt()), currentDate.dayOfMonth).show()
 
             val intent = Intent(this, CalendarActivity::class.java)
             startActivity(intent)
@@ -121,7 +101,6 @@ class MainActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
                     updatePlantRV(db)
                     addPlantDialog.dismiss()
                 }
-
             }
 
             cancelPlantBtn.setOnClickListener {
@@ -132,7 +111,6 @@ class MainActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
             //updatePlantRV(db)
 
         }
-
 }
 
     // обновляем адаптер recycler view для оторажения списка растения
@@ -142,53 +120,13 @@ class MainActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
         plantRV.adapter = plantAdapter
     }
 
-    // получаем сегодняшнюю дату и день недели
-    public fun getCurrentDateTime() {
-        currentDate = LocalDate.now()
-        formattedDate = currentDate.format(formatter)
-
-        currentDayOfWeek = dayOfWeekToRus(currentDate.dayOfWeek.toString())
-    }
-
-    private fun dayOfWeekToRus(dayOfWeek: String): String {
-        when (dayOfWeek) {
-            "MONDAY" -> return "Понедельник"
-            "WEDNESDAY" -> return "Вторник"
-            "TUESDAY" -> return "Среда"
-            "THURSDAY" -> return "Четверг"
-            "FRIDAY" -> return "Пятница"
-            "SATURDAY" -> return "Суббота"
-            "SUNDAY" -> return "Воскресенье"
-            else -> {
-                return "Неизвестный день недели"
-            }
-        }
-    }
-
-    private fun showDate(view: TextView, year: Int, month: Int, day: Int) {
+    /*private fun showDate(view: TextView, year: Int, month: Int, day: Int) {
         view.setText(day.toString() + "-" + monthForCalendar(month).toString() + "-" + year.toString())
-    }
+    }*/
 
-    // отсчет месяца начинается с нуля, нужно увеличить на 1 перед тем, как показать
-    fun monthForCalendar(monthValue: Int): Int {
-        return monthValue - 1
-    }
-    fun monthFromCalendar(monthValue: Int): Int {
-        return monthValue + 1
-    }
 
-    override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
-        savedDay = dayOfMonth
-        savedMonth = monthFromCalendar(month)
-        savedYear = year
 
-        when(dateActionType) {
-            1 -> showDate(dateText, savedYear, savedMonth, savedDay)
-            2 -> showDate(dateText, 2, 1, 2)
-            3 -> showDate(dateText, 3, 2, 3)
-            else -> dateActionType = 0
-        }
-    }
+
 
 }
 
