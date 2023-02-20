@@ -309,9 +309,88 @@ class PlantDetails : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
             // обрабатываем нажатие кнопок добавления действия и отмены
             addPlantActionBtn.setOnClickListener {
                 if (selectedPlant != null) {
-                    var success = db.insertPlantActionToDB(plantId = selectedPlantId, creationDate = LocalDate.now().toString(), name = "Растение ${selectedPlantId}", note = "Заметочка растения $selectedPlantId", actionDateType = 1, everyTimeInterval = 1, certainDateOfMonth = -1, certainDateOfYear = "", weekDaySchedule = "!0000000", certainDate1 = "", certainDate2 = "", color = "#FF0000")
 
-                    plantNameTV.text = PlantAction.parseDateType(dateTypeAutoCompleteTextView.text.toString()).toString()
+                    /*var plantActionToDB: PlantAction = PlantAction.insertToDBHandler(
+                        selectedPlantId,
+                        LocalDate.now().toString(),
+                        plantActionNameACTV.text.toString(),
+                        plantActionNoteET.text.toString(),
+                        PlantAction.parseDateType(dateTypeAutoCompleteTextView.text.toString()),
+                        PlantAction.parseTimeInterval(dateTimeIntervalAutoCompleteTextView.text.toString()),
+                        Integer.parseInt(certainDateOfMonthAutoCompleteTextView.text.toString()),
+                        certainDateOfYearAutoCompleteTextView.text.toString(),
+                        weekDaysString,
+                        dateInterval1.toString(),
+                        dateInterval2.toString()
+                    )*/
+
+                    /*var success = db.insertPlantActionToDB(
+                        plantId = plantActionToDB.plantId,
+                        creationDate = plantActionToDB.creationDate,
+                        name = plantActionNameACTV.text.toString(),
+                        note = plantActionNoteET.text.toString(),
+                        actionDateType = plantActionToDB.actionDateType,
+                        everyTimeInterval = plantActionToDB.everyTimeInterval,
+                        certainDateOfMonth = plantActionToDB.certainDateOfMonth,
+                        certainDateOfYear = plantActionToDB.certainDateOfYear,
+                        weekDaySchedule = plantActionToDB.weekDaysSchedule,
+                        certainDate1 = plantActionToDB.certainDate1,
+                        certainDate2 = plantActionToDB.certainDate2,
+                        color = "#FF0000")*/
+
+                    val plantActionToDB = PlantAction(
+                        plantId = selectedPlantId,
+                        creationDate = LocalDate.now().toString(),
+                        name = plantActionNameACTV.text.toString(),
+                        note = plantActionNoteET.text.toString()
+                    )
+                    when(PlantAction.parseDateType(dateTypeAutoCompleteTextView.text.toString())) {
+                        0 -> {
+                            plantActionToDB.actionDateType = 0
+                            when(PlantAction.parseTimeInterval(dateTimeIntervalAutoCompleteTextView.text.toString())) {
+                                0 -> plantActionToDB.everyTimeInterval = 0
+                                1 -> {
+                                    plantActionToDB.everyTimeInterval = 1
+                                    if (certainDateOfMonthAutoCompleteTextView.text.toString().equals(PlantAction.certainDateOfMonthList[0])) {
+                                        plantActionToDB.certainDateOfMonth = 0
+                                    }
+                                    else plantActionToDB.certainDateOfMonth = Integer.parseInt(certainDateOfMonthAutoCompleteTextView.text.toString())
+
+                                }
+                                2 -> {
+                                    plantActionToDB.everyTimeInterval = 2
+                                    plantActionToDB.certainDateOfYear = certainDateOfYearAutoCompleteTextView.text.toString()
+                                }
+                            }
+                        }
+                        1 -> {
+                            plantActionToDB.actionDateType = 0
+                            plantActionToDB.weekDaysSchedule = weekDaysString
+                        }
+                        2 -> {
+                            plantActionToDB.actionDateType = 0
+                            plantActionToDB.certainDate1 = dateInterval1.toString()
+                            plantActionToDB.certainDate2 = dateInterval2.toString()
+                        }
+                    }
+
+                    var success = db.insertPlantActionToDB(
+                        plantId = plantActionToDB.plantId,
+                        creationDate = plantActionToDB.creationDate,
+                        name = plantActionToDB.name,
+                        note = plantActionToDB.note,
+                        actionDateType = plantActionToDB.actionDateType,
+                        everyTimeInterval = plantActionToDB.everyTimeInterval,
+                        certainDateOfMonth = plantActionToDB.certainDateOfMonth,
+                        certainDateOfYear = plantActionToDB.certainDateOfYear,
+                        weekDaySchedule = plantActionToDB.weekDaysSchedule,
+                        certainDate1 = plantActionToDB.certainDate1,
+                        certainDate2 = plantActionToDB.certainDate2,
+                        color = "#FF0000")
+
+                    //plantNameTV.text = PlantAction.parseDateType(dateTypeAutoCompleteTextView.text.toString()).toString()
+                    plantNameTV.text = plantActionToDB.certainDateOfMonth.toString()
+
                     if (success.toInt() == -1) {
                         Toast.makeText(this, "Ошибка", Toast.LENGTH_LONG).show();
                         addPlantActionDialog.dismiss()

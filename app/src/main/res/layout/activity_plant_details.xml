@@ -16,7 +16,8 @@
         android:id="@+id/plant_name_tv"
         android:text="Plant name"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"/>
     <TextView
         android:id="@+id/plant_note_tv"
         android:text="Plant note"

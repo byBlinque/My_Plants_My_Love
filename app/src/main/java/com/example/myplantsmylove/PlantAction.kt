@@ -12,7 +12,7 @@ class PlantAction(
     var plantId: Int = -1,
 
     // дата создания
-    creationDate: String = "",
+    var creationDate: String = "",
 
     // Название действия - полив, пересадка, обработка растения
     var name: String = "",
@@ -23,13 +23,13 @@ class PlantAction(
     // 0 - Каждый день/месяц/год
     // 1 - По определенным дням недели
     // 2 - В конкретный день/дни
-    var actionDateType: Int = 0,
+    var actionDateType: Int = -1,
 
     // 0 - Каждый день/месяц/год
             // 0 - каждый день
             // 1 - каждый месяц
             // 2 - каждый год
-    var everyTimeInterval: Int = 1,
+    var everyTimeInterval: Int = -1,
 
     // если выбрали временной промежуток через месяц, то определенное число каждого месяца будет храниться здесь
     var certainDateOfMonth: Int = -1,
@@ -140,7 +140,6 @@ class PlantAction(
                 }
             }
         }
-
     }
 
 
