@@ -1,26 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <style name="card_title_style">
         <item name="android:fontFamily">@font/rubik_regular</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/title_dark_color</item>
         <item name="android:textSize">@dimen/card_title_size</item>
     </style>
+
     <style name="card_subtitle_style">
         <item name="android:fontFamily">@font/rubik_regular</item>
         <item name="android:textColor">@color/subtitle_gray_color</item>
         <item name="android:textSize">@dimen/card_subtitle_size</item>
     </style>
+
     <style name="smallest_text_style">
         <item name="android:fontFamily">@font/rubik_regular</item>
         <item name="android:textColor">@color/purple_hightlight_color</item>
         <item name="android:textSize">@dimen/smallest_text_size</item>
     </style>
+
     <style name="dropdown_text_style">
         <item name="android:fontFamily">@font/rubik_regular</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">@dimen/card_title_size</item>
     </style>
+
     <style name="text_layout_style" parent="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
         <item name="boxStrokeColor">@color/stroke_color</item>
         <item name="boxStrokeWidth">@dimen/small_wrapper_stroke_width</item>
@@ -30,12 +35,14 @@
         <item name="hintTextColor">@color/title_dark_color</item>
         <item name="counterTextColor">@color/title_dark_color</item>
     </style>
-    <style name="text_edit_style" >
+
+    <style name="text_edit_style">
         <item name="android:textCursorDrawable">@drawable/textview_cursor</item>
         <item name="fontFamily">@font/rubik_regular</item>
         <item name="android:textColor">@color/title_dark_color</item>
     </style>
-    <style name="helper_text_style" >
+
+    <style name="helper_text_style">
         <item name="fontFamily">@font/rubik_regular</item>
         <item name="android:textColor">@color/title_dark_color</item>
         <item name="android:textSize">@dimen/smallest_text_size</item>
@@ -45,6 +52,7 @@
         <item name="boxStrokeColor">@color/stroke_color</item>
         <item name="boxStrokeWidth">@dimen/small_wrapper_stroke_width</item>
     </style>
+
     <style name="dialog_button_style">
         <item name="android:fontFamily">@font/rubik_regular</item>
         <item name="android:textColor">@color/white</item>
@@ -54,6 +62,7 @@
         <item name="strokeColor">@color/stroke_color</item>
         <item name="backgroundTint">@color/green_hightlight_color</item>
     </style>
+
     <style name="text_dropdown_layout_style" parent="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
         <item name="boxStrokeColor">@color/stroke_color</item>
         <item name="boxStrokeWidth">@dimen/small_wrapper_stroke_width</item>
@@ -64,16 +73,19 @@
         <item name="hintTextColor">@color/title_dark_color</item>
         <item name="counterTextColor">@color/title_dark_color</item>
     </style>
+
     <style name="text_dropdown_edit_style">
         <item name="fontFamily">@font/rubik_regular</item>
         <item name="android:textColor">@color/title_dark_color</item>
     </style>
+
     <style name="day_of_week_button_style">
         <item name="cardCornerRadius">@dimen/day_of_week_button_corner_radius</item>
         <item name="strokeColor">@color/stroke_color</item>
         <item name="strokeWidth">@dimen/small_wrapper_stroke_width</item>
         <item name="backgroundTint">@color/green_hightlight_color</item>
     </style>
+
     <style name="day_of_week_button_text_style">
         <item name="android:fontFamily">@font/rubik_regular</item>
         <item name="android:textColor">@color/stroke_color</item>

@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <TextView xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:ellipsize="end"
-        android:text="Temp"
-        style="@style/dropdown_text_style"
-        android:paddingLeft="10dp"
-        android:paddingBottom="5dp"/>
-    <!--android:textAppearance="?attr/textAppearanceSubtitle1"-->
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/dropdown_text_style"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:ellipsize="end"
+    android:paddingLeft="10dp"
+    android:paddingBottom="5dp"
+    android:text="Temp" /><!--android:textAppearance="?attr/textAppearanceSubtitle1"-->

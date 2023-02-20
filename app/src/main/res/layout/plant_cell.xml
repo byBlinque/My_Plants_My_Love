@@ -1,106 +1,118 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
     app:cardBackgroundColor="@color/white">
-        <com.google.android.material.card.MaterialCardView
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/plant_card_height"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="14dp"
+        android:layout_marginBottom="10dp"
+        app:cardBackgroundColor="#FFFFFF"
+        app:cardCornerRadius="@dimen/card_corner_radius"
+        app:strokeColor="@color/stroke_color"
+        app:strokeWidth="@dimen/general_stroke_width">
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/plant_card_height"
-            app:cardCornerRadius="@dimen/card_corner_radius"
-            app:cardBackgroundColor="#FFFFFF"
-            android:layout_marginHorizontal="14dp"
-            android:layout_marginBottom="10dp"
-            android:layout_gravity="center"
-            android:layout_centerInParent="true"
-            app:strokeColor="@color/stroke_color"
-            app:strokeWidth="@dimen/general_stroke_width">
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="100dp"
+                android:layout_height="match_parent">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="@dimen/plant_image_height"
+                    android:layout_height="@dimen/plant_image_height"
+                    android:layout_centerInParent="true"
+                    app:cardBackgroundColor="#FFFFFF"
+                    app:cardCornerRadius="@dimen/inner_corner_radius"
+                    app:strokeColor="@color/stroke_color"
+                    app:strokeWidth="@dimen/general_stroke_width"></com.google.android.material.card.MaterialCardView>
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginVertical="10dp"
+                android:layout_marginLeft="0dp"
+                android:layout_marginRight="10dp"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginBottom="5dp"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerInParent="true"
+                        app:cardBackgroundColor="@color/green_hightlight_color"
+                        app:cardCornerRadius="@dimen/small_wrapper_corner_radius"
+                        app:strokeColor="@color/stroke_color"
+                        app:strokeWidth="@dimen/small_wrapper_stroke_width">
+
+                        <TextView
+                            android:id="@+id/plant_location"
+                            style="@style/smallest_text_style"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="0dp"
+                            android:layout_marginRight="0dp"
+                            android:fontFamily="@font/rubik_regular"
+                            android:paddingHorizontal="7dp"
+                            android:paddingVertical="3dp"
+                            android:text="Кухня"
+                            android:textColor="@color/white" />
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <TextView
+                        android:id="@+id/plant_delete"
+                        style="@style/smallest_text_style"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:fontFamily="@font/rubik_regular"
+                        android:text="Удалить" />
+                </RelativeLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-                        <RelativeLayout
-                            android:layout_width="100dp"
-                            android:layout_height="match_parent">
-                                <com.google.android.material.card.MaterialCardView
-                                    android:layout_width="@dimen/plant_image_height"
-                                    android:layout_height="@dimen/plant_image_height"
-                                    android:layout_centerInParent="true"
-                                    app:cardBackgroundColor="#FFFFFF"
-                                    app:cardCornerRadius="@dimen/inner_corner_radius"
-                                    app:strokeColor="@color/stroke_color"
-                                    app:strokeWidth="@dimen/general_stroke_width"></com.google.android.material.card.MaterialCardView>
-                        </RelativeLayout>
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_marginVertical="10dp"
-                            android:layout_marginLeft="0dp"
-                            android:layout_marginRight="10dp"
-                            android:orientation="vertical">
-                                <RelativeLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_alignParentTop="true"
-                                    android:layout_marginTop="0dp"
-                                    android:layout_marginBottom="5dp"
-                                    android:orientation="horizontal">
-                                        <com.google.android.material.card.MaterialCardView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_alignParentLeft="true"
-                                            android:layout_centerInParent="true"
-                                            app:cardBackgroundColor="@color/green_hightlight_color"
-                                            app:cardCornerRadius="@dimen/small_wrapper_corner_radius"
-                                            app:strokeColor="@color/stroke_color"
-                                            app:strokeWidth="@dimen/small_wrapper_stroke_width">
-                                                <TextView
-                                                    android:id="@+id/plant_location"
-                                                    android:layout_width="wrap_content"
-                                                    android:layout_height="wrap_content"
-                                                    android:layout_marginTop="0dp"
-                                                    android:layout_marginRight="0dp"
-                                                    android:fontFamily="@font/rubik_regular"
-                                                    android:paddingHorizontal="7dp"
-                                                    android:paddingVertical="3dp"
-                                                    android:text="Кухня"
-                                                    style="@style/smallest_text_style"
-                                                    android:textColor="@color/white" />
-                                        </com.google.android.material.card.MaterialCardView>
-                                        <TextView
-                                            android:id="@+id/plant_delete"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_alignParentRight="true"
-                                            android:layout_centerVertical="true"
-                                            android:fontFamily="@font/rubik_regular"
-                                            android:text="Удалить"
-                                            style="@style/smallest_text_style"/>
-                                </RelativeLayout>
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_centerVertical="true"
-                                    android:layout_marginTop="3dp"
-                                    android:orientation="vertical">
-                                        <TextView
-                                            android:id="@+id/plant_name"
-                                            android:layout_width="match_parent"
-                                            android:layout_height="wrap_content"
-                                            android:layout_marginTop="0dp"
-                                            android:text="Монстера мунлайнт"
-                                            style="@style/card_title_style"/>
-                                        <TextView
-                                            android:id="@+id/plant_note"
-                                            android:layout_width="match_parent"
-                                            android:layout_height="wrap_content"
-                                            android:layout_marginTop="3dp"
-                                            android:text="К весне на продажу"
-                                            style="@style/card_subtitle_style" />
-                                </LinearLayout>
-                        </LinearLayout>
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="3dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/plant_name"
+                        style="@style/card_title_style"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="0dp"
+                        android:text="Монстера мунлайнт" />
+
+                    <TextView
+                        android:id="@+id/plant_note"
+                        style="@style/card_subtitle_style"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:text="К весне на продажу" />
                 </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
 </RelativeLayout>

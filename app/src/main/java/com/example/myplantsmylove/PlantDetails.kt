@@ -344,29 +344,45 @@ class PlantDetails : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
                         name = plantActionNameACTV.text.toString(),
                         note = plantActionNoteET.text.toString()
                     )
+
+                    // 0 - Каждый день/месяц/год
+                    // 1 - По определенным дням недели
+                    // 2 - В конкретный день/дни
                     when(PlantAction.parseDateType(dateTypeAutoCompleteTextView.text.toString())) {
+                        // 0 - Каждый день/месяц/год
                         0 -> {
                             plantActionToDB.actionDateType = 0
+                            // 0 - каждый день
+                            // 1 - каждый месяц
+                            // 2 - каждый год
                             when(PlantAction.parseTimeInterval(dateTimeIntervalAutoCompleteTextView.text.toString())) {
+                                // 0 - каждый день
                                 0 -> plantActionToDB.everyTimeInterval = 0
+                                // 1 - каждый месяц
                                 1 -> {
                                     plantActionToDB.everyTimeInterval = 1
+                                    // определенное число каждого месяца
+                                    // если день месяца равен 0, то напоминать в последний день месяца
                                     if (certainDateOfMonthAutoCompleteTextView.text.toString().equals(PlantAction.certainDateOfMonthList[0])) {
                                         plantActionToDB.certainDateOfMonth = 0
                                     }
                                     else plantActionToDB.certainDateOfMonth = Integer.parseInt(certainDateOfMonthAutoCompleteTextView.text.toString())
 
                                 }
+                                // 2 - каждый год
                                 2 -> {
                                     plantActionToDB.everyTimeInterval = 2
+                                    // определенная дата в году
                                     plantActionToDB.certainDateOfYear = certainDateOfYearAutoCompleteTextView.text.toString()
                                 }
                             }
                         }
+                        // 1 - По определенным дням недели
                         1 -> {
                             plantActionToDB.actionDateType = 0
                             plantActionToDB.weekDaysSchedule = weekDaysString
                         }
+                        // 2 - В конкретный день/дни
                         2 -> {
                             plantActionToDB.actionDateType = 0
                             plantActionToDB.certainDate1 = dateInterval1.toString()
