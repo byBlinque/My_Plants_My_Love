@@ -48,15 +48,15 @@ class MainActivity : AppCompatActivity() {
         val db = DBHelper(this)
 
         plantArray = db.getPlantData()
-        dateText.text = ""
+        /*dateText.text = ""
 
         for (plant in plantArray) {
             dateText.text = dateText.text.toString() + " ${plant.id.toString()}"
-        }
+        }*/
 
         plantRV = findViewById(R.id.plant_rv)
         plantAdapter = PlantAdapter(this, plantArray)
-        layoutManager = LinearLayoutManager(this,LinearLayoutManager.VERTICAL, false)
+        layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         plantRV.layoutManager = layoutManager
         plantRV.adapter = plantAdapter
 
@@ -81,7 +81,10 @@ class MainActivity : AppCompatActivity() {
             addPlantDialog.show()
 
             val window: Window? = addPlantDialog.getWindow()
-            window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
+            window?.setLayout(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT
+            )
 
             var addPlantBtn: Button = dialogView.findViewById(R.id.add_plant_btn)
             var cancelPlantBtn: Button = dialogView.findViewById(R.id.cancel_plant_btn)
@@ -92,12 +95,17 @@ class MainActivity : AppCompatActivity() {
 
             // обрабатываем нажатия на кнопки добавления растения и отмены
             addPlantBtn.setOnClickListener {
-                var success = db.insertPlantToDB(LocalDate.now().toString(), plantNameET.text.toString(), plantNoteET.text.toString(), plantLocationET.text.toString(), plantDescriptionET.text.toString())
+                var success = db.insertPlantToDB(
+                    LocalDate.now().toString(),
+                    plantNameET.text.toString(),
+                    plantNoteET.text.toString(),
+                    plantLocationET.text.toString(),
+                    plantDescriptionET.text.toString()
+                )
                 if (success.toInt() == -1) {
                     Toast.makeText(this, "Ошибка", Toast.LENGTH_LONG).show();
                     addPlantDialog.dismiss()
-                }
-                else {
+                } else {
                     updatePlantRV(db)
                     addPlantDialog.dismiss()
                 }
@@ -111,7 +119,7 @@ class MainActivity : AppCompatActivity() {
             //updatePlantRV(db)
 
         }
-}
+    }
 
     // обновляем адаптер recycler view для оторажения списка растения
     fun updatePlantRV(db: DBHelper) {
@@ -123,9 +131,6 @@ class MainActivity : AppCompatActivity() {
     /*private fun showDate(view: TextView, year: Int, month: Int, day: Int) {
         view.setText(day.toString() + "-" + monthForCalendar(month).toString() + "-" + year.toString())
     }*/
-
-
-
 
 
 }

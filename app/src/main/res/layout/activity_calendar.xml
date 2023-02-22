@@ -21,13 +21,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@android:color/transparent"
             android:text="⊂༼  ◕_◕ ⊂ ༽\nсюда"
-            android:textColor="@color/black"
-            android:textSize="10sp"
-            android:textStyle="bold"
-
-            />
+            style="@style/calendar_button_style" />
 
         <TextView
             android:id="@+id/calendar_month_year_tv"
@@ -37,10 +32,10 @@
             android:layout_weight="1"
             android:background="@null"
             android:text="Февраль 2021"
+            android:fontFamily="@font/rubik_medium"
             android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="17sp"
-            android:textStyle="bold" />
+            android:textColor="@color/title_dark_color"
+            android:textSize="17sp" />
 
 
         <Button
@@ -48,11 +43,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@android:color/transparent"
             android:text="༼ ⊃ ◕_◕ ༽⊃\nтуда"
-            android:textColor="@color/black"
-            android:textSize="10sp"
-            android:textStyle="bold" />
+            style="@style/calendar_button_style" />
 
     </LinearLayout>
 
@@ -66,63 +58,49 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="ПН"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="16sp" />
+            style="@style/calendar_weekdays_style" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="ВТ"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="16sp" />
+            style="@style/calendar_weekdays_style" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="СР"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="16sp" />
+            style="@style/calendar_weekdays_style" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="ЧТ"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="16sp" />
+            style="@style/calendar_weekdays_style"/>
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="ПТ"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="16sp" />
+            style="@style/calendar_weekdays_style" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="СБ"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="16sp" />
+            style="@style/calendar_weekdays_style"/>
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="ВС"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="16sp" />
+            style="@style/calendar_weekdays_style" />
 
     </LinearLayout>
 

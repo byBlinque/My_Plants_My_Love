@@ -8,33 +8,64 @@
     android:orientation="vertical"
     tools:context=".PlantDetails">
 
-    <TextView
-        android:id="@+id/plant_id_tv"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Plant id" />
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/plant_id_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:visibility="gone"/>
 
-    <TextView
-        android:id="@+id/plant_name_tv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Plant name"
-        android:textColor="@color/black" />
+        <TextView
+            android:id="@+id/plant_name_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/add_button_margin"
+            android:fontFamily="@font/rubik_medium"
+            android:textSize="24sp"
+            android:gravity="center_horizontal"
+            android:text="Plant name"
+            android:textColor="@color/title_dark_color"
+            android:layout_marginTop="20dp"/>
 
-    <TextView
-        android:id="@+id/plant_note_tv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Plant note" />
+        <TextView
+            android:id="@+id/plant_note_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/add_button_margin"
+            android:textSize="16sp"
+            android:gravity="center_horizontal"
+            android:text="Plant note"
+            android:textColor="@color/subtitle_gray_color"
+            android:layout_marginTop="4dp"/>
 
-    <Button
+        <TextView
+            android:id="@+id/plant_description_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/add_button_margin"
+            android:textSize="12sp"
+            android:gravity="center_horizontal"
+            android:text="Some description for your plant"
+            android:textColor="@color/title_dark_color"
+            android:layout_marginTop="4dp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/plant_action_rv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"/>
+    </LinearLayout>
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/plant_action_dialog_btn"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Add action" />
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:text="Добавить действие"
+        style="@style/add_button_style"/>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/plant_action_rv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
 </LinearLayout>

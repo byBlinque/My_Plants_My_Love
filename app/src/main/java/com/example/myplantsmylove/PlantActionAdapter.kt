@@ -1,5 +1,6 @@
 package com.example.myplantsmylove
 import android.content.Context
+import android.opengl.Visibility
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -27,6 +28,10 @@ class PlantActionAdapter(
     override fun onBindViewHolder(holder: PlantActionViewHolder, position: Int) {
         holder.plantActionName.text = plantActionArrayList.get(position).name
         holder.plantActionNote.text = plantActionArrayList.get(position).note
+        holder.plantActionDate.text = PlantAction.plantActionDateText(plantActionArrayList.get(position))
+        if (holder.plantActionNote.text.equals("")) {
+            holder.plantActionNote.text = "Без заметки"
+        }
 
         holder.plantActionDelete.setOnClickListener {
             val db = DBHelper(context)

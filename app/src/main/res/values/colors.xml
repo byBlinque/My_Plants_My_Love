@@ -14,8 +14,8 @@
     <color name="subtitle_gray_color">#BEBDBD</color>
     <color name="stroke_color">#331C36</color>
 
-    <color name="green_hightlight_color">#75B49D</color>
-    <color name="purple_hightlight_color">#7A5E7E</color>
+    <color name="green_highlight_color">#75B49D</color>
+    <color name="purple_highlight_color">#7A5E7E</color>
 
     <color name="mtrl_textinput_default_box_stroke_color">@color/stroke_color</color>
 </resources>

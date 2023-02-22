@@ -2,6 +2,7 @@ package com.example.myplantsmylove
 
 import android.text.Editable
 import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 class PlantAction(
 
@@ -26,9 +27,9 @@ class PlantAction(
     var actionDateType: Int = -1,
 
     // 0 - Каждый день/месяц/год
-            // 0 - каждый день
-            // 1 - каждый месяц
-            // 2 - каждый год
+    // 0 - каждый день
+    // 1 - каждый месяц
+    // 2 - каждый год
     var everyTimeInterval: Int = -1,
 
     // если выбрали временной промежуток через месяц, то определенное число каждого месяца будет храниться здесь
@@ -49,7 +50,7 @@ class PlantAction(
     // Цвет действия, который будет отображаться на календаре
     var color: String = "#FF0000"
 
-): java.io.Serializable {
+) : java.io.Serializable {
     companion object {
         var actionNameList = arrayOf<String>(
             "Полив",
@@ -70,7 +71,10 @@ class PlantAction(
             "каждый год"
         )
 
+        var formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy")
+
         var certainDateOfMonthList = arrayListOf<String>("В последний день месяца")
+
         init {
             for (i in 1..30) {
                 certainDateOfMonthList.add(i.toString())
@@ -86,8 +90,8 @@ class PlantAction(
             }
             return result
         }
-        fun intToActionDateType(actionTypeInt: Int): String
-        {
+
+        fun intToActionDateType(actionTypeInt: Int): String {
             return dateTypeList.get(actionTypeInt)
         }
 
@@ -100,18 +104,18 @@ class PlantAction(
             }
             return result
         }
-        fun intToActionDateTimeInterval(actionTimeIntervalInt: Int): String
-        {
+
+        fun intToActionDateTimeInterval(actionTimeIntervalInt: Int): String {
             return timeIntervalList.get(actionTimeIntervalInt)
         }
+
         fun parseIntWeekDays(weekDaysString: String): ArrayList<Int> {
             var arrayInt: ArrayList<Int> = arrayListOf()
             var arrayChar = weekDaysString.toCharArray()
             for (arrayElement in arrayChar) {
                 if (arrayElement.equals('0') || arrayElement.equals('1')) {
                     arrayInt.add(Integer.parseInt(arrayElement.toString()))
-                }
-                else {
+                } else {
                     arrayInt.add(0)
                 }
             }
@@ -122,6 +126,7 @@ class PlantAction(
         fun monthForCalendar(monthValue: Int): Int {
             return monthValue - 1
         }
+
         fun monthFromCalendar(monthValue: Int): Int {
             return monthValue + 1
         }
@@ -140,8 +145,70 @@ class PlantAction(
                 }
             }
         }
-    }
+        fun monthToRus(month: String): String {
+            when (month) {
+                "JANUARY" -> return "Января"
+                "FEBRUARY" -> return "Февраля"
+                "MARCH" -> return "Марта"
+                "APRIL" -> return "Апреля"
+                "MAY" -> return "Мая"
+                "JUNE" -> return "Июня"
+                "JULY" -> return "Июля"
+                "AUGUST" -> return "Августа"
+                "SEPTEMBER" -> return "Сентября"
+                "OCTOBER" -> return "Октября"
+                "NOVEMBER" -> return "Ноября"
+                "DECEMBER" -> return "Декабря"
+                else -> {
+                    return "Неизвестный день недели"
+                }
+            }
+        }
 
+        fun plantActionDateText(plantAction: PlantAction): String {
+            var result: String = "123"
+            when (plantAction.actionDateType) {
+                // 0 - Каждый день/месяц/год
+                0 -> {
+                    // 0 - каждый день
+                    // 1 - каждый месяц
+                    // 2 - каждый год
+                    when (plantAction.everyTimeInterval) {
+                        // 0 - каждый день
+                        0 -> result = "каждый день"
+                        // 1 - каждый месяц
+                        1 -> {
+                            // определенное число каждого месяца
+                            if (plantAction.certainDateOfMonth == 0) {
+                                result = "в последний день месяца"
+                            } else result = "каждый месяц ${plantAction.certainDateOfMonth} числа"
+                        }
+                        // 2 - каждый год
+                        2 -> {
+                            // определенная дата в году
+                            result = "каждый год ${LocalDate.parse(plantAction.certainDateOfYear).dayOfMonth} ${monthToRus(LocalDate.parse(plantAction.certainDateOfYear).month.toString())}"
+                        }
+                        else -> result = "!"
+                    }
+                }
+                // 1 - По определенным дням недели
+                1 -> {
+                    var dayOfWeekString: String = "каждую неделю в " // доделать
+                }
+                // 2 - В конкретный день/дни
+                2 -> {
+                    if (plantAction.certainDate1.toString().equals(plantAction.certainDate2.toString())) {
+                        result = "выполнить ${LocalDate.parse(plantAction.certainDate1).format(formatter)}"
+                    }
+                    else {
+                        result = "с ${LocalDate.parse(plantAction.certainDate1).format(formatter)} по ${LocalDate.parse(plantAction.certainDate2).format(formatter)}"
+                    }
+                }
+                else -> result = "!"
+            }
+            return result
+        }
+    }
 
 
 }

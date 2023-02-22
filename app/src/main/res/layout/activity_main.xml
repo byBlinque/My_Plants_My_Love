@@ -12,11 +12,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:text="Календарь"
+        android:text="Перейти в календарь >"
+        android:fontFamily="@font/rubik_regular"
         android:textColor="@color/black"
-        android:textSize="30sp"
+        android:textSize="16sp"
+        android:layout_marginRight="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
@@ -28,7 +29,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/text_view_date"></androidx.recyclerview.widget.RecyclerView>
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/plant_dialog_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -36,8 +37,8 @@
         android:layout_marginRight="20dp"
         android:layout_marginBottom="20dp"
         android:padding="10dp"
-        android:text="Добавить"
-        android:textSize="20sp"
+        android:text="Добавить растение"
+        style="@style/add_button_style"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

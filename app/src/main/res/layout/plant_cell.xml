@@ -59,7 +59,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
                         android:layout_centerInParent="true"
-                        app:cardBackgroundColor="@color/green_hightlight_color"
+                        app:cardBackgroundColor="@color/green_highlight_color"
                         app:cardCornerRadius="@dimen/small_wrapper_corner_radius"
                         app:strokeColor="@color/stroke_color"
                         app:strokeWidth="@dimen/small_wrapper_stroke_width">

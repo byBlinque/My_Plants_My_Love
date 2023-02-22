@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="card_corner_radius">20dp</dimen>
-    <dimen name="inner_corner_radius">15dp</dimen>
-    <dimen name="small_wrapper_corner_radius">5dp</dimen>
+    <dimen name="inner_corner_radius">16dp</dimen>
+    <dimen name="small_wrapper_corner_radius">6dp</dimen>
 
     <dimen name="general_stroke_width">2dp</dimen>
     <dimen name="small_wrapper_stroke_width">1.5dp</dimen>
@@ -10,8 +10,8 @@
     <dimen name="plant_card_height">100dp</dimen>
     <dimen name="plant_image_height">80dp</dimen>
 
-    <dimen name="plant_action_height">70dp</dimen>
-    <dimen name="plant_action_image_height">50dp</dimen>
+    <dimen name="plant_action_height">90dp</dimen>
+    <dimen name="plant_action_image_height">70dp</dimen>
 
     <dimen name="card_title_size">20sp</dimen>
     <dimen name="card_subtitle_size">15sp</dimen>
@@ -20,4 +20,6 @@
     <dimen name="dialog_button_corner_radius">10dp</dimen>
 
     <dimen name="day_of_week_button_corner_radius">6dp</dimen>
+
+    <dimen name="add_button_margin">20dp</dimen>
 </resources>

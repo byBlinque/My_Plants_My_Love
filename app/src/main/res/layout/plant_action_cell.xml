@@ -74,13 +74,13 @@
                                 app:layout_constraintLeft_toLeftOf="parent"
                                 app:layout_constraintTop_toTopOf="parent" />
 
-                            <com.google.android.material.card.MaterialCardView
+                            <!--<com.google.android.material.card.MaterialCardView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentLeft="true"
                                 android:layout_centerInParent="true"
                                 android:layout_marginLeft="10dp"
-                                app:cardBackgroundColor="@color/green_hightlight_color"
+                                app:cardBackgroundColor="@color/green_highlight_color"
                                 app:cardCornerRadius="@dimen/small_wrapper_corner_radius"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintLeft_toRightOf="@id/plant_action_name"
@@ -98,9 +98,9 @@
                                     android:fontFamily="@font/rubik_regular"
                                     android:paddingHorizontal="7dp"
                                     android:paddingVertical="3dp"
-                                    android:text="Кухня"
+                                    android:text="с 29.05.22 по 30.05.22"
                                     android:textColor="@color/white" />
-                            </com.google.android.material.card.MaterialCardView>
+                            </com.google.android.material.card.MaterialCardView>-->
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
                         <TextView
@@ -121,6 +121,15 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="3dp"
                         android:text="Поливать с ph 4" />
+
+                    <TextView
+                        android:id="@+id/plant_action_date"
+                        style="@style/smallest_text_style"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:textColor="@color/green_highlight_color"
+                        android:text="выполнить с 10.10.22 по 14.10.22" />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>

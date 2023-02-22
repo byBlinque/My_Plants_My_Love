@@ -26,6 +26,7 @@ class PlantDetails : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
     lateinit var plantIdTV: TextView
     lateinit var plantNameTV: TextView
     lateinit var plantNoteTV: TextView
+    lateinit var plantDescriptionTV: TextView
 
     lateinit var plantActionDialogBtn: Button
 
@@ -35,7 +36,7 @@ class PlantDetails : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
 
     private lateinit var currentDate: LocalDate
     private lateinit var formattedDate: String
-    var formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+    var formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy")
 
     var dateInterval1: LocalDate = LocalDate.now()
     var dateInterval2: LocalDate = LocalDate.now()
@@ -61,6 +62,7 @@ class PlantDetails : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
 
     //test var 1
     var count: Int = 0
+
     //test var 2
     var actionName: String = "Действие "
 
@@ -72,6 +74,7 @@ class PlantDetails : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
         plantIdTV = findViewById(R.id.plant_id_tv)
         plantNameTV = findViewById(R.id.plant_name_tv)
         plantNoteTV = findViewById(R.id.plant_note_tv)
+        plantDescriptionTV = findViewById(R.id.plant_description_tv)
         plantActionDialogBtn = findViewById(R.id.plant_action_dialog_btn)
 
         selectedPlantPosition = intent.extras?.get("selectedPlantPosition") as Int
@@ -99,6 +102,13 @@ class PlantDetails : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
         plantIdTV.text = selectedPlantId.toString()
         plantNameTV.text = selectedPlant?.name.toString()
         plantNoteTV.text = selectedPlant?.note.toString()
+        if (selectedPlant?.description.toString().equals("")) {
+            plantDescriptionTV.text = "Без описания"
+        }
+        else {
+            plantDescriptionTV.text = selectedPlant?.description.toString()
+        }
+
 
         // вызываем диалог добавления действия
         plantActionDialogBtn.setOnClickListener {
@@ -114,11 +124,19 @@ class PlantDetails : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
             addPlantActionDialog.show()
 
             val window: Window? = addPlantActionDialog.getWindow()
-            window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
+            window?.setLayout(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT
+            )
 
             // инициализируем название действия и заметку
-            var plantActionNameACTV: AutoCompleteTextView = dialogView.findViewById(R.id.plant_action_name_actv)
-            var plantActionNameAdapter = ArrayAdapter(this, R.layout.add_action_dropdown_menu_list_item, PlantAction.actionNameList)
+            var plantActionNameACTV: AutoCompleteTextView =
+                dialogView.findViewById(R.id.plant_action_name_actv)
+            var plantActionNameAdapter = ArrayAdapter(
+                this,
+                R.layout.add_action_dropdown_menu_list_item,
+                PlantAction.actionNameList
+            )
             plantActionNameACTV.setAdapter(plantActionNameAdapter)
 
             var plantActionNoteET: EditText = dialogView.findViewById(R.id.plant_action_note_et)
@@ -129,28 +147,47 @@ class PlantDetails : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
             // 0 - Каждый день/месяц/год
             // 1 - По определенным дням недели
             // 2 - В конкретный день/дни
-            var dateTypeArrayAdapter = ArrayAdapter(this, R.layout.add_action_dropdown_menu_list_item, PlantAction.dateTypeList)
-            var dateTypeAutoCompleteTextView: AutoCompleteTextView = dialogView.findViewById(R.id.action_date_type_auto_complete_tv)
+            var dateTypeArrayAdapter = ArrayAdapter(
+                this,
+                R.layout.add_action_dropdown_menu_list_item,
+                PlantAction.dateTypeList
+            )
+            var dateTypeAutoCompleteTextView: AutoCompleteTextView =
+                dialogView.findViewById(R.id.action_date_type_auto_complete_tv)
             dateTypeAutoCompleteTextView.setAdapter(dateTypeArrayAdapter)
 
             // 0 - Каждый день/месяц/год
-                // 0 - каждый день
-                // 1 - каждый месяц
-                // 2 - каждый год
-            var dateTimeIntervalAutoCompleteTextViewWrapper: TextInputLayout = dialogView.findViewById(R.id.date_time_interval_auto_complete_tv_wrapper)
-            var dateTimeIntervalArrayAdapter = ArrayAdapter(this, R.layout.add_action_dropdown_menu_list_item, PlantAction.timeIntervalList)
-            var dateTimeIntervalAutoCompleteTextView: AutoCompleteTextView = dialogView.findViewById(R.id.date_time_interval_auto_complete_tv)
+            // 0 - каждый день
+            // 1 - каждый месяц
+            // 2 - каждый год
+            var dateTimeIntervalAutoCompleteTextViewWrapper: TextInputLayout =
+                dialogView.findViewById(R.id.date_time_interval_auto_complete_tv_wrapper)
+            var dateTimeIntervalArrayAdapter = ArrayAdapter(
+                this,
+                R.layout.add_action_dropdown_menu_list_item,
+                PlantAction.timeIntervalList
+            )
+            var dateTimeIntervalAutoCompleteTextView: AutoCompleteTextView =
+                dialogView.findViewById(R.id.date_time_interval_auto_complete_tv)
             dateTimeIntervalAutoCompleteTextView.setAdapter(dateTimeIntervalArrayAdapter)
 
             // 0 - Каждый день/месяц/год
-                // 1 - каждый месяц : здесь нужно будет выбрать конкретный день месяца
-            var certainDateOfMonthAutoCompleteTextViewWrapper: TextInputLayout = dialogView.findViewById(R.id.certain_date_of_month_auto_complete_tv_wrapper)
-            var certainDateOfMonthArrayAdapter = ArrayAdapter(this, R.layout.add_action_dropdown_menu_list_item, PlantAction.certainDateOfMonthList)
-            var certainDateOfMonthAutoCompleteTextView: AutoCompleteTextView = dialogView.findViewById(R.id.certain_date_of_month_auto_complete_tv)
+            // 1 - каждый месяц : здесь нужно будет выбрать конкретный день месяца
+            var certainDateOfMonthAutoCompleteTextViewWrapper: TextInputLayout =
+                dialogView.findViewById(R.id.certain_date_of_month_auto_complete_tv_wrapper)
+            var certainDateOfMonthArrayAdapter = ArrayAdapter(
+                this,
+                R.layout.add_action_dropdown_menu_list_item,
+                PlantAction.certainDateOfMonthList
+            )
+            var certainDateOfMonthAutoCompleteTextView: AutoCompleteTextView =
+                dialogView.findViewById(R.id.certain_date_of_month_auto_complete_tv)
             certainDateOfMonthAutoCompleteTextView.setAdapter(certainDateOfMonthArrayAdapter)
-                // 2 - каждый год : здесь нужно будет выбрать конкретный день в году
-            var certainDateOfYearAutoCompleteTextViewWrapper: TextInputLayout = dialogView.findViewById(R.id.certain_date_of_year_auto_complete_tv_wrapper)
-            var certainDateOfYearAutoCompleteTextView: AutoCompleteTextView = dialogView.findViewById(R.id.certain_date_of_year_auto_complete_tv)
+            // 2 - каждый год : здесь нужно будет выбрать конкретный день в году
+            var certainDateOfYearAutoCompleteTextViewWrapper: TextInputLayout =
+                dialogView.findViewById(R.id.certain_date_of_year_auto_complete_tv_wrapper)
+            var certainDateOfYearAutoCompleteTextView: AutoCompleteTextView =
+                dialogView.findViewById(R.id.certain_date_of_year_auto_complete_tv)
 
             // 1 - По определенным дням недели
             var weekDaysButtons: FlexboxLayout = dialogView.findViewById(R.id.week_days_buttons)
@@ -175,28 +212,36 @@ class PlantDetails : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
             )
 
             // 2 - В конкретный день/дни
-            var dateInterval1AutoCompleteTextViewWrapper: TextInputLayout = dialogView.findViewById(R.id.first_date_interval_auto_complete_tv_wrapper)
-            var dateInterval1AutoCompleteTextView: AutoCompleteTextView = dialogView.findViewById(R.id.first_date_interval_auto_complete_tv)
+            var dateInterval1AutoCompleteTextViewWrapper: TextInputLayout =
+                dialogView.findViewById(R.id.first_date_interval_auto_complete_tv_wrapper)
+            var dateInterval1AutoCompleteTextView: AutoCompleteTextView =
+                dialogView.findViewById(R.id.first_date_interval_auto_complete_tv)
 
-            var dateInterval2AutoCompleteTextViewWrapper: TextInputLayout = dialogView.findViewById(R.id.second_date_interval_auto_complete_tv_wrapper)
-            var dateInterval2AutoCompleteTextView: AutoCompleteTextView = dialogView.findViewById(R.id.second_date_interval_auto_complete_tv)
+            var dateInterval2AutoCompleteTextViewWrapper: TextInputLayout =
+                dialogView.findViewById(R.id.second_date_interval_auto_complete_tv_wrapper)
+            var dateInterval2AutoCompleteTextView: AutoCompleteTextView =
+                dialogView.findViewById(R.id.second_date_interval_auto_complete_tv)
 
             // обрабатываем нажатия на элементы
-                // тип даты действия
-            dateTypeAutoCompleteTextView.setOnItemClickListener { parent, view, position, id -> plantActionDateTypeHandler(
-                dateTypeAutoCompleteTextView.text.toString(),
-                dateTimeIntervalAutoCompleteTextViewWrapper,
-                certainDateOfMonthAutoCompleteTextViewWrapper,
-                certainDateOfYearAutoCompleteTextViewWrapper,
-                weekDaysButtons,
-                dateInterval1AutoCompleteTextViewWrapper,
-                dateInterval2AutoCompleteTextViewWrapper
-            ) }
-                // интервал выполнения действия
-            dateTimeIntervalAutoCompleteTextView.setOnItemClickListener { parent, view, position, id -> plantActionDateIntervalHandler(
-                dateTimeIntervalAutoCompleteTextView.text.toString(),
-                certainDateOfMonthAutoCompleteTextViewWrapper,
-                certainDateOfYearAutoCompleteTextViewWrapper)
+            // тип даты действия
+            dateTypeAutoCompleteTextView.setOnItemClickListener { parent, view, position, id ->
+                plantActionDateTypeHandler(
+                    dateTypeAutoCompleteTextView.text.toString(),
+                    dateTimeIntervalAutoCompleteTextViewWrapper,
+                    certainDateOfMonthAutoCompleteTextViewWrapper,
+                    certainDateOfYearAutoCompleteTextViewWrapper,
+                    weekDaysButtons,
+                    dateInterval1AutoCompleteTextViewWrapper,
+                    dateInterval2AutoCompleteTextViewWrapper
+                )
+            }
+            // интервал выполнения действия
+            dateTimeIntervalAutoCompleteTextView.setOnItemClickListener { parent, view, position, id ->
+                plantActionDateIntervalHandler(
+                    dateTimeIntervalAutoCompleteTextView.text.toString(),
+                    certainDateOfMonthAutoCompleteTextViewWrapper,
+                    certainDateOfYearAutoCompleteTextViewWrapper
+                )
             }
             certainDateOfYearAutoCompleteTextView.setOnClickListener {
                 val datePicker = MaterialDatePicker.Builder.datePicker().build()
@@ -207,7 +252,9 @@ class PlantDetails : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
                     val date: Long = it
                     val format = SimpleDateFormat("yyyy-MM-dd")
                     dateInterval1 = LocalDate.parse(format.format(date))
-                    certainDateOfYearAutoCompleteTextView.setText(dateInterval1.format(formatter).toString())
+                    certainDateOfYearAutoCompleteTextView.setText(
+                        dateInterval1.format(formatter).toString()
+                    )
                 }
 
                 // Setting up the event for when cancelled is clicked
@@ -220,14 +267,14 @@ class PlantDetails : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
                     //Toast.makeText(this, "Date Picker Cancelled", Toast.LENGTH_LONG).show()
                 }
             }
-                // кнопки дней недели
+            // кнопки дней недели
             monButton.setOnClickListener {
                 weekDaysButtonsArray[1] = weekDayClick(1, monButton, weekDaysButtonsArray[1].second)
                 changeWeekDayValue(1, weekDaysButtonsArray[1].second, weekDaysButtonsArray)
             }
             tueButton.setOnClickListener {
                 weekDaysButtonsArray[2] = weekDayClick(2, tueButton, weekDaysButtonsArray[2].second)
-            changeWeekDayValue(2, weekDaysButtonsArray[2].second, weekDaysButtonsArray)
+                changeWeekDayValue(2, weekDaysButtonsArray[2].second, weekDaysButtonsArray)
             }
             wenButton.setOnClickListener {
                 weekDaysButtonsArray[3] = weekDayClick(3, wenButton, weekDaysButtonsArray[3].second)
@@ -265,8 +312,12 @@ class PlantDetails : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
                     //Toast.makeText(this, "${datePicker.headerText} is selected" + "${format.format(startDate).toString()}", Toast.LENGTH_LONG).show()
                     dateInterval1 = LocalDate.parse(format.format(startDate))
                     dateInterval2 = LocalDate.parse(format.format(endDate))
-                    dateInterval1AutoCompleteTextView.setText(dateInterval1.format(formatter).toString())
-                    dateInterval2AutoCompleteTextView.setText(dateInterval2.format(formatter).toString())
+                    dateInterval1AutoCompleteTextView.setText(
+                        dateInterval1.format(formatter).toString()
+                    )
+                    dateInterval2AutoCompleteTextView.setText(
+                        dateInterval2.format(formatter).toString()
+                    )
                 }
                 // Setting up the event for when cancelled is clicked
                 datePicker.addOnNegativeButtonClickListener {
@@ -293,8 +344,12 @@ class PlantDetails : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
                     //Toast.makeText(this, "${datePicker.headerText} is selected" + "${format.format(startDate).toString()}", Toast.LENGTH_LONG).show()
                     dateInterval1 = LocalDate.parse(format.format(startDate))
                     dateInterval2 = LocalDate.parse(format.format(endDate))
-                    dateInterval1AutoCompleteTextView.setText(dateInterval1.format(formatter).toString())
-                    dateInterval2AutoCompleteTextView.setText(dateInterval2.format(formatter).toString())
+                    dateInterval1AutoCompleteTextView.setText(
+                        dateInterval1.format(formatter).toString()
+                    )
+                    dateInterval2AutoCompleteTextView.setText(
+                        dateInterval2.format(formatter).toString()
+                    )
                 }
                 // Setting up the event for when cancelled is clicked
                 datePicker.addOnNegativeButtonClickListener {
@@ -305,7 +360,7 @@ class PlantDetails : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
                     //Toast.makeText(this, "Date Picker Cancelled", Toast.LENGTH_LONG).show()
                 }
             }
-            
+
             // обрабатываем нажатие кнопок добавления действия и отмены
             addPlantActionBtn.setOnClickListener {
                 if (selectedPlant != null) {
@@ -348,14 +403,14 @@ class PlantDetails : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
                     // 0 - Каждый день/месяц/год
                     // 1 - По определенным дням недели
                     // 2 - В конкретный день/дни
-                    when(PlantAction.parseDateType(dateTypeAutoCompleteTextView.text.toString())) {
+                    when (PlantAction.parseDateType(dateTypeAutoCompleteTextView.text.toString())) {
                         // 0 - Каждый день/месяц/год
                         0 -> {
                             plantActionToDB.actionDateType = 0
                             // 0 - каждый день
                             // 1 - каждый месяц
                             // 2 - каждый год
-                            when(PlantAction.parseTimeInterval(dateTimeIntervalAutoCompleteTextView.text.toString())) {
+                            when (PlantAction.parseTimeInterval(dateTimeIntervalAutoCompleteTextView.text.toString())) {
                                 // 0 - каждый день
                                 0 -> plantActionToDB.everyTimeInterval = 0
                                 // 1 - каждый месяц
@@ -363,28 +418,30 @@ class PlantDetails : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
                                     plantActionToDB.everyTimeInterval = 1
                                     // определенное число каждого месяца
                                     // если день месяца равен 0, то напоминать в последний день месяца
-                                    if (certainDateOfMonthAutoCompleteTextView.text.toString().equals(PlantAction.certainDateOfMonthList[0])) {
+                                    if (certainDateOfMonthAutoCompleteTextView.text.toString()
+                                            .equals(PlantAction.certainDateOfMonthList[0])
+                                    ) {
                                         plantActionToDB.certainDateOfMonth = 0
-                                    }
-                                    else plantActionToDB.certainDateOfMonth = Integer.parseInt(certainDateOfMonthAutoCompleteTextView.text.toString())
-
+                                    } else plantActionToDB.certainDateOfMonth =
+                                        Integer.parseInt(certainDateOfMonthAutoCompleteTextView.text.toString())
                                 }
                                 // 2 - каждый год
                                 2 -> {
                                     plantActionToDB.everyTimeInterval = 2
                                     // определенная дата в году
-                                    plantActionToDB.certainDateOfYear = certainDateOfYearAutoCompleteTextView.text.toString()
+                                    plantActionToDB.certainDateOfYear =
+                                        dateInterval1.toString()
                                 }
                             }
                         }
                         // 1 - По определенным дням недели
                         1 -> {
-                            plantActionToDB.actionDateType = 0
+                            plantActionToDB.actionDateType = 1
                             plantActionToDB.weekDaysSchedule = weekDaysString
                         }
                         // 2 - В конкретный день/дни
                         2 -> {
-                            plantActionToDB.actionDateType = 0
+                            plantActionToDB.actionDateType = 2
                             plantActionToDB.certainDate1 = dateInterval1.toString()
                             plantActionToDB.certainDate2 = dateInterval2.toString()
                         }
@@ -402,16 +459,16 @@ class PlantDetails : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
                         weekDaySchedule = plantActionToDB.weekDaysSchedule,
                         certainDate1 = plantActionToDB.certainDate1,
                         certainDate2 = plantActionToDB.certainDate2,
-                        color = "#FF0000")
+                        color = "#FF0000"
+                    )
 
                     //plantNameTV.text = PlantAction.parseDateType(dateTypeAutoCompleteTextView.text.toString()).toString()
-                    plantNameTV.text = plantActionToDB.certainDateOfMonth.toString()
+                    //plantNameTV.text = plantActionToDB.certainDateOfMonth.toString()
 
                     if (success.toInt() == -1) {
                         Toast.makeText(this, "Ошибка", Toast.LENGTH_LONG).show();
                         addPlantActionDialog.dismiss()
-                    }
-                    else {
+                    } else {
                         updatePlantActionRV(db, selectedPlant)
                         addPlantActionDialog.dismiss()
                     }
@@ -447,7 +504,8 @@ class PlantDetails : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
                 certainDateOfYearAutoCompleteTextViewWrapper.visibility = View.GONE
                 weekDaysButtons.visibility = View.GONE
                 dateInterval1AutoCompleteTextViewWrapper.visibility = View.GONE
-                dateInterval2AutoCompleteTextViewWrapper.visibility = dateInterval1AutoCompleteTextViewWrapper.visibility
+                dateInterval2AutoCompleteTextViewWrapper.visibility =
+                    dateInterval1AutoCompleteTextViewWrapper.visibility
             }
             1 -> {
                 dateTimeIntervalAutoCompleteTextViewWrapper.visibility = View.GONE
@@ -455,7 +513,8 @@ class PlantDetails : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
                 certainDateOfYearAutoCompleteTextViewWrapper.visibility = View.GONE
                 weekDaysButtons.visibility = View.VISIBLE
                 dateInterval1AutoCompleteTextViewWrapper.visibility = View.GONE
-                dateInterval2AutoCompleteTextViewWrapper.visibility = dateInterval1AutoCompleteTextViewWrapper.visibility
+                dateInterval2AutoCompleteTextViewWrapper.visibility =
+                    dateInterval1AutoCompleteTextViewWrapper.visibility
             }
             2 -> {
                 dateTimeIntervalAutoCompleteTextViewWrapper.visibility = View.GONE
@@ -463,7 +522,8 @@ class PlantDetails : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
                 certainDateOfYearAutoCompleteTextViewWrapper.visibility = View.GONE
                 weekDaysButtons.visibility = View.GONE
                 dateInterval1AutoCompleteTextViewWrapper.visibility = View.VISIBLE
-                dateInterval2AutoCompleteTextViewWrapper.visibility = dateInterval1AutoCompleteTextViewWrapper.visibility
+                dateInterval2AutoCompleteTextViewWrapper.visibility =
+                    dateInterval1AutoCompleteTextViewWrapper.visibility
             }
             else -> {
                 dateTimeIntervalAutoCompleteTextViewWrapper.visibility = View.GONE
@@ -471,7 +531,8 @@ class PlantDetails : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
                 certainDateOfYearAutoCompleteTextViewWrapper.visibility = View.GONE
                 weekDaysButtons.visibility = View.GONE
                 dateInterval1AutoCompleteTextViewWrapper.visibility = View.GONE
-                dateInterval2AutoCompleteTextViewWrapper.visibility = dateInterval1AutoCompleteTextViewWrapper.visibility
+                dateInterval2AutoCompleteTextViewWrapper.visibility =
+                    dateInterval1AutoCompleteTextViewWrapper.visibility
             }
         }
     }
@@ -507,11 +568,19 @@ class PlantDetails : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
         return (1 - elementIndex)
     }
 
-    fun weekDayClick(index: Int, buttonView: MaterialCardView, buttonValue: Int): Pair<MaterialCardView, Int> {
+    fun weekDayClick(
+        index: Int,
+        buttonView: MaterialCardView,
+        buttonValue: Int
+    ): Pair<MaterialCardView, Int> {
         return Pair(buttonView, weekDayInvertValue(buttonValue))
     }
 
-    fun changeWeekDayValue(position: Int, valueToChange: Int, weekDaysButtonsArray: ArrayList<Pair<MaterialCardView, Int>>): String {
+    fun changeWeekDayValue(
+        position: Int,
+        valueToChange: Int,
+        weekDaysButtonsArray: ArrayList<Pair<MaterialCardView, Int>>
+    ): String {
         var arrayInt = PlantAction.parseIntWeekDays(weekDaysString)
         for (n in arrayInt.indices) {
             if (n == position) {
