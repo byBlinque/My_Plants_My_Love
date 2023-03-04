@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.view.Window
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myplantsmylove.SQLiteDBClasses.DBHelper
@@ -271,30 +272,72 @@ class PlantDetails : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
             monButton.setOnClickListener {
                 weekDaysButtonsArray[1] = weekDayClick(1, monButton, weekDaysButtonsArray[1].second)
                 changeWeekDayValue(1, weekDaysButtonsArray[1].second, weekDaysButtonsArray)
+                if (weekDaysButtonsArray[1].second == 0) {
+                    monButton.setStrokeColor(resources.getColor(R.color.stroke_color, null))
+                }
+                else {
+                    monButton.setStrokeColor(resources.getColor(R.color.green_highlight_color, null))
+                }
             }
             tueButton.setOnClickListener {
                 weekDaysButtonsArray[2] = weekDayClick(2, tueButton, weekDaysButtonsArray[2].second)
                 changeWeekDayValue(2, weekDaysButtonsArray[2].second, weekDaysButtonsArray)
+                if (weekDaysButtonsArray[2].second == 0) {
+                    tueButton.setStrokeColor(resources.getColor(R.color.stroke_color, null))
+                }
+                else {
+                    tueButton.setStrokeColor(resources.getColor(R.color.green_highlight_color, null))
+                }
             }
             wenButton.setOnClickListener {
                 weekDaysButtonsArray[3] = weekDayClick(3, wenButton, weekDaysButtonsArray[3].second)
                 changeWeekDayValue(3, weekDaysButtonsArray[3].second, weekDaysButtonsArray)
+                if (weekDaysButtonsArray[3].second == 0) {
+                    wenButton.setStrokeColor(resources.getColor(R.color.stroke_color, null))
+                }
+                else {
+                    wenButton.setStrokeColor(resources.getColor(R.color.green_highlight_color, null))
+                }
             }
             thuButton.setOnClickListener {
                 weekDaysButtonsArray[4] = weekDayClick(4, thuButton, weekDaysButtonsArray[4].second)
                 changeWeekDayValue(4, weekDaysButtonsArray[4].second, weekDaysButtonsArray)
+                if (weekDaysButtonsArray[4].second == 0) {
+                    thuButton.setStrokeColor(resources.getColor(R.color.stroke_color, null))
+                }
+                else {
+                    thuButton.setStrokeColor(resources.getColor(R.color.green_highlight_color, null))
+                }
             }
             friButton.setOnClickListener {
                 weekDaysButtonsArray[5] = weekDayClick(5, friButton, weekDaysButtonsArray[5].second)
                 changeWeekDayValue(5, weekDaysButtonsArray[5].second, weekDaysButtonsArray)
+                if (weekDaysButtonsArray[5].second == 0) {
+                    friButton.setStrokeColor(resources.getColor(R.color.stroke_color, null))
+                }
+                else {
+                    friButton.setStrokeColor(resources.getColor(R.color.green_highlight_color, null))
+                }
             }
             satButton.setOnClickListener {
                 weekDaysButtonsArray[6] = weekDayClick(6, satButton, weekDaysButtonsArray[6].second)
                 changeWeekDayValue(6, weekDaysButtonsArray[6].second, weekDaysButtonsArray)
+                if (weekDaysButtonsArray[6].second == 0) {
+                    satButton.setStrokeColor(resources.getColor(R.color.stroke_color, null))
+                }
+                else {
+                    satButton.setStrokeColor(resources.getColor(R.color.green_highlight_color, null))
+                }
             }
             sunButton.setOnClickListener {
                 weekDaysButtonsArray[7] = weekDayClick(7, sunButton, weekDaysButtonsArray[7].second)
                 changeWeekDayValue(7, weekDaysButtonsArray[7].second, weekDaysButtonsArray)
+                if (weekDaysButtonsArray[7].second == 0) {
+                    sunButton.setStrokeColor(resources.getColor(R.color.stroke_color, null))
+                }
+                else {
+                    sunButton.setStrokeColor(resources.getColor(R.color.green_highlight_color, null))
+                }
             }
 
             dateInterval1AutoCompleteTextView.setOnClickListener {
@@ -463,7 +506,7 @@ class PlantDetails : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
                     )
 
                     //plantNameTV.text = PlantAction.parseDateType(dateTypeAutoCompleteTextView.text.toString()).toString()
-                    //plantNameTV.text = plantActionToDB.certainDateOfMonth.toString()
+                    //plantNameTV.text = weekDaysString
 
                     if (success.toInt() == -1) {
                         Toast.makeText(this, "Ошибка", Toast.LENGTH_LONG).show();

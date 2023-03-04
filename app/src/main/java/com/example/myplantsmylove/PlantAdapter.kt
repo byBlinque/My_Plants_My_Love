@@ -2,12 +2,15 @@ package com.example.myplantsmylove
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.myplantsmylove.SQLiteDBClasses.DBHelper
 import java.util.ArrayList
 
@@ -21,6 +24,19 @@ class PlantAdapter(
         var plantNote: TextView = itemView.findViewById(R.id.plant_note)
         var plantLocation: TextView = itemView.findViewById(R.id.plant_location)
         var plantDelete: TextView = itemView.findViewById(R.id.plant_delete)
+        var plantImage: ImageView = itemView.findViewById(R.id.plant_image)
+
+        private val imageUrl = "https://img.freepik.com/free-vector/open-blue-book-white_1308-69339.jpg"
+
+        fun bind(plant: Plant) {
+            plantName.text = plant.name
+            plantNote.text = plant.note
+            plantLocation.text = plant.location
+            Glide.with(itemView.context)
+                .load(R.drawable.plant)
+                .centerCrop()
+                .into(plantImage)
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlantViewHolder {
@@ -30,9 +46,8 @@ class PlantAdapter(
     }
 
     override fun onBindViewHolder(holder: PlantViewHolder, position: Int) {
-        holder.plantName.text = plantArrayList.get(position).name
-        holder.plantNote.text = plantArrayList.get(position).note
-        holder.plantLocation.text = plantArrayList.get(position).location
+
+        holder.bind(plantArrayList[position])
 
         holder.itemView.setOnClickListener {
             val intent = Intent(context, PlantDetails::class.java)

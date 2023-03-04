@@ -83,7 +83,7 @@
         <item name="cardCornerRadius">@dimen/day_of_week_button_corner_radius</item>
         <item name="strokeColor">@color/stroke_color</item>
         <item name="strokeWidth">@dimen/small_wrapper_stroke_width</item>
-        <item name="backgroundTint">@color/green_highlight_color</item>
+        <item name="backgroundColor">#FF0000</item>
     </style>
 
     <style name="day_of_week_button_text_style">

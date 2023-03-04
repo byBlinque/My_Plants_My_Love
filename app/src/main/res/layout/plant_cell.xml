@@ -35,7 +35,13 @@
                     app:cardBackgroundColor="#FFFFFF"
                     app:cardCornerRadius="@dimen/inner_corner_radius"
                     app:strokeColor="@color/stroke_color"
-                    app:strokeWidth="@dimen/general_stroke_width"></com.google.android.material.card.MaterialCardView>
+                    app:strokeWidth="@dimen/general_stroke_width">
+                    <ImageView
+                        android:id="@+id/plant_image"
+                        android:padding="8dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"/>
+                </com.google.android.material.card.MaterialCardView>
             </RelativeLayout>
 
             <LinearLayout
